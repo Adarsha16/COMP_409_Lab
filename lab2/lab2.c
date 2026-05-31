@@ -10,15 +10,15 @@ void verifyString(char str[])
     // Validate characters and process epsilon 'e'
     for (int i = 0; i < original_len; i++)
     {
-        // If character is not a, b, or e return.
-        if (str[i] != 'a' && str[i] != 'b' && str[i] != 'e')
+        // Check for characters other than '0', '1', and 'e'
+        if (str[i] != '0' && str[i] != '1' && str[i] != 'e')
         {
             printf("INVALID\n");
             return;
         }
 
-        // If character is 'e', ignore it
-        // Else, add it to our effective string
+        // If character is 'e', skip
+        // Otherwise, add it to our effective string
         if (str[i] != 'e')
         {
             effective_str[j] = str[i];
@@ -27,19 +27,19 @@ void verifyString(char str[])
     }
     effective_str[j] = '\0';
 
-    // Check length of the effective string
+    // print invalid if string length is < 2
     if (j < 2)
     {
         printf("INVALID\n");
         return;
     }
 
-    // Identify first and last character
+    // identify first and last character
     char first = effective_str[0];
     char last = effective_str[j - 1];
 
-    // Check against the regular expression structure
-    if ((first == 'a' && last == 'b') || (first == 'b' && last == 'a'))
+    // validate the string
+    if ((first == '0' && last == '0') || (first == '1' && last == '1'))
     {
         printf("VALID\n");
     }

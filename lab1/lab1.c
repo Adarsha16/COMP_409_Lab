@@ -179,7 +179,7 @@ int main()
     {
         printf("| %-12s | %-15s |\n", tokens[i].lexeme, tokens[i].tokenType);
     }
-    printf("-----------------------------------\n");
+    printf("\n");
 
     return 0;
 }
