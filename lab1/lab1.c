@@ -12,7 +12,6 @@ typedef struct
 Token tokens[1000];
 int tokenCount = 0;
 
-// Function to check if a string is a keyword
 int isKeyword(char buffer[])
 {
     char keywords[10][10] = {"int", "float", "char", "if", "else", "while", "return", "void", "for", "do"};
@@ -40,7 +39,6 @@ int isDelimiter(char ch)
     return 0;
 }
 
-// Function to check if a character is an operator
 int isOperator(char ch)
 {
     char operators[] = "+-*/=<>!";
@@ -68,7 +66,6 @@ int main()
     char ch, buffer[100];
     int j = 0;
 
-    // file operation to open input file
     fp = fopen("file.txt", "r");
     if (fp == NULL)
     {
@@ -117,7 +114,6 @@ int main()
             else
             {
                 addToken(buffer, "OPERATOR");
-                // Put the non-operator character back into the stream
                 ungetc(next_ch, fp);
             }
             continue;
@@ -136,7 +132,7 @@ int main()
                 ch = fgetc(fp);
             }
             buffer[j] = '\0';
-            ungetc(ch, fp); // Put the last read character back
+            ungetc(ch, fp);
 
             if (isKeyword(buffer))
             {
@@ -162,7 +158,7 @@ int main()
                 ch = fgetc(fp);
             }
             buffer[j] = '\0';
-            ungetc(ch, fp); // Put the last read character back
+            ungetc(ch, fp);
 
             addToken(buffer, "NUMBER");
             continue;
@@ -171,7 +167,6 @@ int main()
 
     fclose(fp);
 
-    // Display the stored tokens
     printf("Tokens:\n");
     printf("| %-12s | %-15s |\n", "LEXEME", "TOKEN");
     printf("\n");

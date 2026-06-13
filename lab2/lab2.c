@@ -16,9 +16,7 @@ void verifyString(char str[])
             printf("INVALID\n");
             return;
         }
-
-        // If character is 'e', skip
-        // Otherwise, add it to our effective string
+        // Skip if character is 'e'
         if (str[i] != 'e')
         {
             effective_str[j] = str[i];
@@ -26,14 +24,12 @@ void verifyString(char str[])
         }
     }
     effective_str[j] = '\0';
-
     // print invalid if string length is < 2
     if (j < 2)
     {
         printf("INVALID\n");
         return;
     }
-
     // identify first and last character
     char first = effective_str[0];
     char last = effective_str[j - 1];
